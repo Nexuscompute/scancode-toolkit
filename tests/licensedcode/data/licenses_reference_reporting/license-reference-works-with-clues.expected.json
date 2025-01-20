@@ -96,13 +96,13 @@
     {
       "identifier": "openssl-e1da0b01-fab9-e27d-4ff3-c4944b09b621",
       "license_expression": "openssl",
-      "license_expression_spdx": "LicenseRef-scancode-openssl",
+      "license_expression_spdx": "OpenSSL-standalone",
       "detection_count": 1,
       "detection_log": [],
       "reference_matches": [
         {
           "license_expression": "openssl",
-          "license_expression_spdx": "LicenseRef-scancode-openssl",
+          "license_expression_spdx": "OpenSSL-standalone",
           "from_file": "python.LICENSE",
           "start_line": 440,
           "end_line": 487,
@@ -426,13 +426,13 @@
     {
       "identifier": "ssleay_windows-d3dabc12-d861-87db-b339-f73beba8703a",
       "license_expression": "ssleay-windows",
-      "license_expression_spdx": "LicenseRef-scancode-ssleay-windows",
+      "license_expression_spdx": "SSLeay-standalone",
       "detection_count": 1,
       "detection_log": [],
       "reference_matches": [
         {
           "license_expression": "ssleay-windows",
-          "license_expression_spdx": "LicenseRef-scancode-ssleay-windows",
+          "license_expression_spdx": "SSLeay-standalone",
           "from_file": "python.LICENSE",
           "start_line": 497,
           "end_line": 548,
@@ -717,14 +717,18 @@
       "is_exception": false,
       "is_unknown": false,
       "is_generic": false,
-      "spdx_license_key": "LicenseRef-scancode-openssl",
-      "other_spdx_license_keys": [],
+      "spdx_license_key": "OpenSSL-standalone",
+      "other_spdx_license_keys": [
+        "LicenseRef-scancode-openssl"
+      ],
       "osi_license_key": null,
       "text_urls": [],
       "osi_url": null,
       "faq_url": "http://www.openssl.org/support/faq.html",
       "other_urls": [
-        "http://www.openssl.org/source/license.html"
+        "http://www.openssl.org/source/license.html",
+        "https://library.netapp.com/ecm/ecm_download_file/ECMP1196395",
+        "https://hstechdocs.helpsystems.com/manuals/globalscape/archive/cuteftp6/open_ssl_license_agreement.htm"
       ],
       "key_aliases": [],
       "minimum_coverage": 70,
@@ -743,7 +747,7 @@
       "text": "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions\nare met:\n\n1. Redistributions of source code must retain the above copyright\n   notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright\n   notice, this list of conditions and the following disclaimer in\n   the documentation and/or other materials provided with the\n   distribution.\n\n3. All advertising materials mentioning features or use of this\n   software must display the following acknowledgment:\n   \"This product includes software developed by the OpenSSL Project\n   for use in the OpenSSL Toolkit. (http://www.OpenSSL.org/)\"\n\n4. The names \"OpenSSL Toolkit\" and \"OpenSSL Project\" must not be used to\n   endorse or promote products derived from this software without\n   prior written permission. For written permission, please contact\n   licensing@OpenSSL.org.\n\n5. Products derived from this software may not be called \"OpenSSL\"\n   nor may \"OpenSSL\" appear in their names without prior written\n   permission of the OpenSSL Project.\n\n6. Redistributions of any form whatsoever must retain the following\n   acknowledgment:\n   \"This product includes software developed by the OpenSSL Project\n   for use in the OpenSSL Toolkit (http://www.OpenSSL.org/)\"\n\nTHIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY\nEXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR\nPURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE OpenSSL PROJECT OR\nITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\nSPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\nNOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\nHOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,\nSTRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED\nOF THE POSSIBILITY OF SUCH DAMAGE.",
       "scancode_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/licenses/openssl.LICENSE",
       "licensedb_url": "https://scancode-licensedb.aboutcode.org/openssl",
-      "spdx_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/licenses/openssl.LICENSE"
+      "spdx_url": "https://spdx.org/licenses/OpenSSL-standalone"
     },
     {
       "key": "openssl-ssleay",
@@ -965,8 +969,10 @@
       "is_exception": false,
       "is_unknown": false,
       "is_generic": false,
-      "spdx_license_key": "LicenseRef-scancode-ssleay-windows",
-      "other_spdx_license_keys": [],
+      "spdx_license_key": "SSLeay-standalone",
+      "other_spdx_license_keys": [
+        "LicenseRef-scancode-ssleay-windows"
+      ],
       "osi_license_key": null,
       "text_urls": [
         "http://www.openssl.org/source/license.html"
@@ -974,6 +980,7 @@
       "osi_url": null,
       "faq_url": null,
       "other_urls": [
+        "https://www.tq-group.com/filedownloads/files/software-license-conditions/OriginalSSLeay/OriginalSSLeay.pdf",
         "http://h71000.www7.hp.com/doc/83final/ba554_90007/apcs02.html"
       ],
       "key_aliases": [],
@@ -997,7 +1004,7 @@
       "text": "This package is an SSL implementation written by Eric Young (eay@cryptsoft.com).\nThe implementation was written so as to conform with Netscapes SSL.\n\nThis library is free for commercial and non-commercial use as long as\nthe following conditions are aheared to.  The following conditions\napply to all code found in this distribution, be it the RC4, RSA,\nlhash, DES, etc., code; not just the SSL code.  The SSL documentation\nincluded with this distribution is covered by the same copyright terms\nexcept that the holder is Tim Hudson (tjh@cryptsoft.com).\n\nCopyright remains Eric Young's, and as such any Copyright notices in\nthe code are not to be removed.\nIf this package is used in a product, Eric Young should be given attribution\nas the author of the parts of the library used.\nThis can be in the form of a textual message at program startup or\nin documentation (online or textual) provided with the package.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions\nare met:\n1. Redistributions of source code must retain the copyright\n   notice, this list of conditions and the following disclaimer.\n2. Redistributions in binary form must reproduce the above copyright\n   notice, this list of conditions and the following disclaimer in the\n   documentation and/or other materials provided with the distribution.\n3. All advertising materials mentioning features or use of this software\n   must display the following acknowledgement:\n   \"This product includes cryptographic software written by\n    Eric Young (eay@cryptsoft.com)\"\n   The word 'cryptographic' can be left out if the rouines from the library\n   being used are not cryptographic related :-).\n4. If you include any Windows specific code (or a derivative thereof) from\n   the apps directory (application code) you must include an acknowledgement:\n   \"This product includes software written by Tim Hudson (tjh@cryptsoft.com)\"\n\nTHIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS\nOR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\nHOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\nLIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY\nOUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF\nSUCH DAMAGE.\n\nThe licence and distribution terms for any publically available version or\nderivative of this code cannot be changed.  i.e. this code cannot simply be\ncopied and put under another distribution licence\n[including the GNU Public Licence.]",
       "scancode_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/licenses/ssleay-windows.LICENSE",
       "licensedb_url": "https://scancode-licensedb.aboutcode.org/ssleay-windows",
-      "spdx_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/licenses/ssleay-windows.LICENSE"
+      "spdx_url": "https://spdx.org/licenses/SSLeay-standalone"
     },
     {
       "key": "tcl",
@@ -1638,7 +1645,7 @@
       "path": "python.LICENSE",
       "type": "file",
       "detected_license_expression": "python AND (other-copyleft AND gpl-1.0-plus) AND (python AND python-cwi) AND bzip2-libbzip-2010 AND sleepycat AND bsd-new AND openssl-ssleay AND openssl AND ssleay-windows AND tcl",
-      "detected_license_expression_spdx": "Python-2.0 AND (LicenseRef-scancode-other-copyleft AND GPL-1.0-or-later) AND (Python-2.0 AND LicenseRef-scancode-python-cwi) AND bzip2-1.0.6 AND Sleepycat AND BSD-3-Clause AND OpenSSL AND LicenseRef-scancode-openssl AND LicenseRef-scancode-ssleay-windows AND TCL",
+      "detected_license_expression_spdx": "Python-2.0 AND (LicenseRef-scancode-other-copyleft AND GPL-1.0-or-later) AND (Python-2.0 AND LicenseRef-scancode-python-cwi) AND bzip2-1.0.6 AND Sleepycat AND BSD-3-Clause AND OpenSSL AND OpenSSL-standalone AND SSLeay-standalone AND TCL",
       "license_detections": [
         {
           "license_expression": "python",
@@ -1646,7 +1653,7 @@
           "matches": [
             {
               "license_expression": "python",
-              "spdx_license_expression": "Python-2.0",
+              "license_expression_spdx": "Python-2.0",
               "from_file": "python.LICENSE",
               "start_line": 23,
               "end_line": 26,
@@ -1670,7 +1677,7 @@
           "matches": [
             {
               "license_expression": "other-copyleft",
-              "spdx_license_expression": "LicenseRef-scancode-other-copyleft",
+              "license_expression_spdx": "LicenseRef-scancode-other-copyleft",
               "from_file": "python.LICENSE",
               "start_line": 62,
               "end_line": 62,
@@ -1686,7 +1693,7 @@
             },
             {
               "license_expression": "gpl-1.0-plus",
-              "spdx_license_expression": "GPL-1.0-or-later",
+              "license_expression_spdx": "GPL-1.0-or-later",
               "from_file": "python.LICENSE",
               "start_line": 62,
               "end_line": 63,
@@ -1702,7 +1709,7 @@
             },
             {
               "license_expression": "gpl-1.0-plus",
-              "spdx_license_expression": "GPL-1.0-or-later",
+              "license_expression_spdx": "GPL-1.0-or-later",
               "from_file": "python.LICENSE",
               "start_line": 63,
               "end_line": 63,
@@ -1718,7 +1725,7 @@
             },
             {
               "license_expression": "gpl-1.0-plus",
-              "spdx_license_expression": "GPL-1.0-or-later",
+              "license_expression_spdx": "GPL-1.0-or-later",
               "from_file": "python.LICENSE",
               "start_line": 64,
               "end_line": 65,
@@ -1734,7 +1741,7 @@
             },
             {
               "license_expression": "other-copyleft",
-              "spdx_license_expression": "LicenseRef-scancode-other-copyleft",
+              "license_expression_spdx": "LicenseRef-scancode-other-copyleft",
               "from_file": "python.LICENSE",
               "start_line": 65,
               "end_line": 65,
@@ -1750,7 +1757,7 @@
             },
             {
               "license_expression": "gpl-1.0-plus",
-              "spdx_license_expression": "GPL-1.0-or-later",
+              "license_expression_spdx": "GPL-1.0-or-later",
               "from_file": "python.LICENSE",
               "start_line": 66,
               "end_line": 66,
@@ -1766,7 +1773,7 @@
             },
             {
               "license_expression": "other-copyleft",
-              "spdx_license_expression": "LicenseRef-scancode-other-copyleft",
+              "license_expression_spdx": "LicenseRef-scancode-other-copyleft",
               "from_file": "python.LICENSE",
               "start_line": 68,
               "end_line": 68,
@@ -1782,7 +1789,7 @@
             },
             {
               "license_expression": "gpl-1.0-plus",
-              "spdx_license_expression": "GPL-1.0-or-later",
+              "license_expression_spdx": "GPL-1.0-or-later",
               "from_file": "python.LICENSE",
               "start_line": 71,
               "end_line": 71,
@@ -1806,7 +1813,7 @@
           "matches": [
             {
               "license_expression": "python",
-              "spdx_license_expression": "Python-2.0",
+              "license_expression_spdx": "Python-2.0",
               "from_file": "python.LICENSE",
               "start_line": 77,
               "end_line": 255,
@@ -1822,7 +1829,7 @@
             },
             {
               "license_expression": "python-cwi",
-              "spdx_license_expression": "LicenseRef-scancode-python-cwi",
+              "license_expression_spdx": "LicenseRef-scancode-python-cwi",
               "from_file": "python.LICENSE",
               "start_line": 257,
               "end_line": 272,
@@ -1846,7 +1853,7 @@
           "matches": [
             {
               "license_expression": "unknown-license-reference",
-              "spdx_license_expression": "LicenseRef-scancode-unknown-license-reference",
+              "license_expression_spdx": "LicenseRef-scancode-unknown-license-reference",
               "from_file": "python.LICENSE",
               "start_line": 274,
               "end_line": 274,
@@ -1862,7 +1869,7 @@
             },
             {
               "license_expression": "bzip2-libbzip-2010",
-              "spdx_license_expression": "bzip2-1.0.6",
+              "license_expression_spdx": "bzip2-1.0.6",
               "from_file": "python.LICENSE",
               "start_line": 281,
               "end_line": 310,
@@ -1888,7 +1895,7 @@
           "matches": [
             {
               "license_expression": "unknown-license-reference",
-              "spdx_license_expression": "LicenseRef-scancode-unknown-license-reference",
+              "license_expression_spdx": "LicenseRef-scancode-unknown-license-reference",
               "from_file": "python.LICENSE",
               "start_line": 317,
               "end_line": 317,
@@ -1904,7 +1911,7 @@
             },
             {
               "license_expression": "sleepycat",
-              "spdx_license_expression": "Sleepycat",
+              "license_expression_spdx": "Sleepycat",
               "from_file": "python.LICENSE",
               "start_line": 334,
               "end_line": 351,
@@ -1930,7 +1937,7 @@
           "matches": [
             {
               "license_expression": "bsd-new",
-              "spdx_license_expression": "BSD-3-Clause",
+              "license_expression_spdx": "BSD-3-Clause",
               "from_file": "python.LICENSE",
               "start_line": 369,
               "end_line": 391,
@@ -1954,7 +1961,7 @@
           "matches": [
             {
               "license_expression": "bsd-new",
-              "spdx_license_expression": "BSD-3-Clause",
+              "license_expression_spdx": "BSD-3-Clause",
               "from_file": "python.LICENSE",
               "start_line": 397,
               "end_line": 419,
@@ -1978,7 +1985,7 @@
           "matches": [
             {
               "license_expression": "unknown-license-reference",
-              "spdx_license_expression": "LicenseRef-scancode-unknown-license-reference",
+              "license_expression_spdx": "LicenseRef-scancode-unknown-license-reference",
               "from_file": "python.LICENSE",
               "start_line": 422,
               "end_line": 422,
@@ -1994,7 +2001,7 @@
             },
             {
               "license_expression": "openssl-ssleay",
-              "spdx_license_expression": "OpenSSL",
+              "license_expression_spdx": "OpenSSL",
               "from_file": "python.LICENSE",
               "start_line": 428,
               "end_line": 432,
@@ -2010,7 +2017,7 @@
             },
             {
               "license_expression": "openssl-ssleay",
-              "spdx_license_expression": "OpenSSL",
+              "license_expression_spdx": "OpenSSL",
               "from_file": "python.LICENSE",
               "start_line": 434,
               "end_line": 434,
@@ -2032,11 +2039,11 @@
         },
         {
           "license_expression": "openssl",
-          "license_expression_spdx": "LicenseRef-scancode-openssl",
+          "license_expression_spdx": "OpenSSL-standalone",
           "matches": [
             {
               "license_expression": "openssl",
-              "spdx_license_expression": "LicenseRef-scancode-openssl",
+              "license_expression_spdx": "OpenSSL-standalone",
               "from_file": "python.LICENSE",
               "start_line": 440,
               "end_line": 487,
@@ -2056,11 +2063,11 @@
         },
         {
           "license_expression": "ssleay-windows",
-          "license_expression_spdx": "LicenseRef-scancode-ssleay-windows",
+          "license_expression_spdx": "SSLeay-standalone",
           "matches": [
             {
               "license_expression": "ssleay-windows",
-              "spdx_license_expression": "LicenseRef-scancode-ssleay-windows",
+              "license_expression_spdx": "SSLeay-standalone",
               "from_file": "python.LICENSE",
               "start_line": 497,
               "end_line": 548,
@@ -2084,7 +2091,7 @@
           "matches": [
             {
               "license_expression": "unknown-license-reference",
-              "spdx_license_expression": "LicenseRef-scancode-unknown-license-reference",
+              "license_expression_spdx": "LicenseRef-scancode-unknown-license-reference",
               "from_file": "python.LICENSE",
               "start_line": 552,
               "end_line": 552,
@@ -2100,7 +2107,7 @@
             },
             {
               "license_expression": "tcl",
-              "spdx_license_expression": "TCL",
+              "license_expression_spdx": "TCL",
               "from_file": "python.LICENSE",
               "start_line": 554,
               "end_line": 593,
@@ -2126,7 +2133,7 @@
           "matches": [
             {
               "license_expression": "unknown-license-reference",
-              "spdx_license_expression": "LicenseRef-scancode-unknown-license-reference",
+              "license_expression_spdx": "LicenseRef-scancode-unknown-license-reference",
               "from_file": "python.LICENSE",
               "start_line": 595,
               "end_line": 595,
@@ -2142,7 +2149,7 @@
             },
             {
               "license_expression": "tcl",
-              "spdx_license_expression": "TCL",
+              "license_expression_spdx": "TCL",
               "from_file": "python.LICENSE",
               "start_line": 597,
               "end_line": 635,
@@ -2166,7 +2173,7 @@
       "license_clues": [
         {
           "license_expression": "bsd-simplified",
-          "spdx_license_expression": "BSD-2-Clause",
+          "license_expression_spdx": "BSD-2-Clause",
           "from_file": "python.LICENSE",
           "start_line": 358,
           "end_line": 363,

@@ -5,7 +5,7 @@ name: Create ScanCode release archives, then test and publish to GH and PyPI
  # Summary of the steps:
  # - Build wheel and sdist for the "main" scancode, then build these for the "mini" flavor
  #  - test each wheel and sdist on every possible OS x Python version combinations
- # - Build release app archives, one for each of linux, windows, macos on Python 3.8
+ # - Build release app archives, one for each of linux, windows, macos on Python 3.9 to 3.12
  #  - test each on its target OS and Python version
  # - Create gh-release and upload app archives to release
  # - Upload all wheels and sdist to PyPI
@@ -25,7 +25,7 @@ jobs:
       contents: read # to fetch code (actions/checkout)
 
     name: Build PyPI wheels
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     defaults:
       run:
@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-       pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+       pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
@@ -59,7 +59,7 @@ jobs:
       contents: read # to fetch code (actions/checkout)
 
     name: Build PyPI sdist archives
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     defaults:
       run:
@@ -91,7 +91,7 @@ jobs:
       contents: read # to fetch code (actions/checkout)
 
     name: Build app Release for linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     defaults:
       run:
@@ -100,10 +100,11 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-       pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+       pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
+      - run: git fetch --prune --unshallow
 
       - name: Set up Python on ${{ matrix.pyver }}
         uses: actions/setup-python@v4
@@ -125,7 +126,7 @@ jobs:
       contents: read # to fetch code (actions/checkout)
 
     name: Build app Release for mac
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     defaults:
       run:
@@ -134,10 +135,11 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-       pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+       pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
+      - run: git fetch --prune --unshallow
 
       - name: Set up Python on ${{ matrix.pyver }}
         uses: actions/setup-python@v4
@@ -159,7 +161,7 @@ jobs:
       contents: read # to fetch code (actions/checkout)
 
     name: Build app Release for windows
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     defaults:
       run:
@@ -168,10 +170,11 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-       pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+       pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
+      - run: git fetch --prune --unshallow
 
       - name: Set up Python on ${{ matrix.pyver }}
         uses: actions/setup-python@v4
@@ -193,7 +196,7 @@ jobs:
       contents: read # to fetch code (actions/checkout)
 
     name: Build app source
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     defaults:
       run:
@@ -203,6 +206,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: git fetch --prune --unshallow
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -235,8 +239,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, macos-11, macos-12]
-        pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        os: [ubuntu-22.04, ubuntu-24.04, macos-13, macos-14]
+        pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
@@ -282,7 +286,7 @@ jobs:
       fail-fast: true
       matrix:
        os: [windows-2019, windows-2022]
-       pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+       pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
@@ -326,8 +330,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04]
-        pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        os: [ubuntu-22.04, ubuntu-24.04]
+        pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
@@ -367,8 +371,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [macos-11, macos-12]
-        pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        os: [macos-13, macos-14]
+        pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
@@ -409,7 +413,7 @@ jobs:
       fail-fast: true
       matrix:
         os: [windows-2019, windows-2022]
-        pyver: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        pyver: ["3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v3
@@ -443,7 +447,7 @@ jobs:
       - build_scancode_for_release_linux
       - build_scancode_for_release_macos
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
@@ -455,18 +459,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: source_app
-          path: dist
-
-      - name: Download a single artifact macos_app for python 3.7
-        uses: actions/download-artifact@v3
-        with:
-          name: macos_app_py_3.7
-          path: dist
-
-      - name: Download a single artifact macos_app for python 3.8
-        uses: actions/download-artifact@v3
-        with:
-          name: macos_app_py_3.8
           path: dist
 
       - name: Download a single artifact macos_app for python 3.9
@@ -487,16 +479,10 @@ jobs:
           name: macos_app_py_3.11
           path: dist
 
-      - name: Download a single artifact linux_app for python 3.7
+      - name: Download a single artifact macos_app for python 3.12
         uses: actions/download-artifact@v3
         with:
-          name: linux_app_py_3.7
-          path: dist
-
-      - name: Download a single artifact linux_app for python 3.8
-        uses: actions/download-artifact@v3
-        with:
-          name: linux_app_py_3.8
+          name: macos_app_py_3.12
           path: dist
 
       - name: Download a single artifact linux_app for python 3.9
@@ -517,16 +503,10 @@ jobs:
           name: linux_app_py_3.11
           path: dist
 
-      - name: Download a single artifact windows_app for python 3.7
+      - name: Download a single artifact linux_app for python 3.12
         uses: actions/download-artifact@v3
         with:
-          name: windows_app_py_3.7
-          path: dist
-
-      - name: Download a single artifact windows_app for python 3.8
-        uses: actions/download-artifact@v3
-        with:
-          name: windows_app_py_3.8
+          name: linux_app_py_3.12
           path: dist
 
       - name: Download a single artifact windows_app for python 3.9
@@ -545,6 +525,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: windows_app_py_3.11
+          path: dist
+
+      - name: Download a single artifact windows_app for python 3.12
+        uses: actions/download-artifact@v3
+        with:
+          name: windows_app_py_3.12
           path: dist
 
       - name: Mock GH release
@@ -566,20 +552,20 @@ jobs:
       - smoke_test_install_and_run_pypi_wheels_on_windows
       - smoke_test_install_and_run_pypi_wheels_on_posix
       - publish_to_gh_release
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     defaults:
       run:
         shell: bash
     strategy:
       fail-fast: true
       matrix:
-        dist_names: ["wheels-3.7", "wheels-3.8", "wheels-3.9", "wheels-3.10", "wheels-3.11", sdists]
+        dist_names: ["wheels-3.9", "wheels-3.10", "wheels-3.11", "wheels-3.12", sdists]
 
     steps:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: 3.9
 
       - name: Download a single artifact
         uses: actions/download-artifact@v3
@@ -592,6 +578,6 @@ jobs:
           ls -al dist
 
       - name: Publish distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@master
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}

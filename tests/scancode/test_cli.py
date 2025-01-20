@@ -121,8 +121,14 @@ def test_run_scan_includes_outdated_in_extra():
     assert results['headers'][0]['extra_data']['OUTDATED'] == 'out of date'
 
 
+def test_no_version_check_run_is_successful():
+    test_file = test_env.get_test_loc('single/iproute.c')
+    result_file = test_env.get_temp_file('json')
+    run_scan_click(['--no-check-version', test_file, '--json', result_file], expected_rc=0)
+
+
 def test_usage_and_help_return_a_correct_script_name_on_all_platforms():
-    result = run_scan_click(['--help'])
+    result = run_scan_click(options=['--help'], test_mode=False, retry=False)
     assert 'Usage: scancode [OPTIONS]' in result.output
     # this was showing up on Windows
     assert 'scancode-script.py' not in result.output
@@ -679,7 +685,10 @@ def test_scan_does_scan_rpm():
 
 
 def test_scan_cli_help(regen=REGEN_TEST_FIXTURES):
-    expected_file = test_env.get_test_loc('help/help.txt')
+    if on_linux:
+        expected_file = test_env.get_test_loc('help/help_linux.txt')
+    else:
+        expected_file = test_env.get_test_loc('help/help.txt')
     result = run_scan_click(['--help'])
     result = result.output
     if regen:
@@ -709,7 +718,7 @@ def test_scan_to_json_without_FILE_does_not_write_to_next_option():
     result = run_scan_click(args, expected_rc=2)
     assert (
         'Error: Invalid value for "--json": Illegal file name '
-        'conflicting with an option name: --info.'
+        'conflicting with an option name: "--info".'
     ).replace("'", '"') in result.output.replace("'", '"')
 
 
@@ -966,3 +975,35 @@ def test_getting_version_returns_valid_yaml():
     args = ['-V']
     result = run_scan_click(args)
     assert saneyaml.load(result.output) == test_version
+
+
+faulty_json = [
+    ('various-inputs/not-a-json-but-png.json', 2, 'Error: Invalid value: Input JSON scan file(s) is not valid JSON'),
+    ('various-inputs/not-a-yaml-but-png.yaml', 2, 'Error: Invalid value: Input JSON scan file(s) is not valid JSON'),
+    ('various-inputs/png.png', 2, 'Error: Invalid value: Input JSON scan file(s) is not valid JSON'),
+    ('various-inputs/true-json.json', 2, 'Error: Invalid value: Failed to process codebase'),
+    ('various-inputs/true-yaml.yaml', 2, 'Error: Invalid value: Input JSON scan file(s) is not valid JSON'),
+    ('various-inputs/true-yaml-license-policy-yaml.yml', 2, 'Error: Invalid value: Input JSON scan file(s) is not valid JSON'),
+    ('various-inputs/true-yaml.yml', 2, 'Error: Invalid value: Input JSON scan file(s) is not valid JSON'),
+]
+
+
+@pytest.mark.parametrize('test_file, expected_rc, expected_message', faulty_json)
+def test_scan_does_validate_input_and_fails_on_faulty_json_input(test_file, expected_rc, expected_message):
+    test_file = test_env.get_test_loc(test_file)
+    result = run_scan_click(
+        [
+            '--from-json',
+            test_file,
+            '--json-pp',
+            '-',
+         ],
+        expected_rc=expected_rc,
+        retry=False,
+    )
+    assert expected_message in result.output
+
+
+def test_scan_does_validate_input_and_does_not_fail_on_valid_json_input():
+    test_file = test_env.get_test_loc('various-inputs/true-scan-json.json')
+    run_scan_click(['--from-json', test_file, '--json-pp', '-'], retry=False)
